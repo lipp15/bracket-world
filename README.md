@@ -8,9 +8,11 @@ jQuery plugin to generate a customizable single-elimination tournament bracket o
 - Bracket visuals can be zoomed in/out and made into a horizontal or vertical structure
 - Team names and seeds can be fed through the plugin options or via the API
 
-Based off of the brackets used in http://www.bracket-world.com.
+Based off of the brackets used in http://bracket-world.com.
 
-Minified version size: ~20kb
+[View demos and documentation](http://mike-lipman.com/plugin/bracket-world/demo/index.html)
+
+Minified size: ~20kb
 
 ## Start
 
@@ -25,7 +27,7 @@ Add this after your jQuery file include (usually just before the ending `</body>
 <script src="path/to/your/jquery.bracket-world.min.js"></script>
 ```
 
-Define the container for the bracket. It can be any simple wrapper but if you choose to give it an id/class, it should not be 'bracket-area', which is reserved:
+Define the container for the bracket. It can be any simple wrapper but if you choose to give it an id/class, it should not be 'bracket-area', which is reserved for the plugin:
 ```html
 <div id="bracket1"></div>
 ```
@@ -35,7 +37,7 @@ Invoke the creation of a bracket in your js (jQuery) code - this creates the mos
 $('#bracket1').bracket();
 ```
 
-Options can be sent in the invocation - this example creates an 11 team bracket, with 50 pixels of spacing from the top of the container in a 700 pixel space, zoomed out to 75% scale with helper icons and specific team names/seeds:
+Options can be sent in the invocation - this example creates an 11 team bracket, with 50 pixels of spacing from the top of the container in a 700 pixel vertical space, zoomed out to 75% scale with helper icons and specific team names/seeds:
 ```JavaScript
 $('#bracket1').bracket(
 {
@@ -111,7 +113,7 @@ Default: 2
 
 Between 0 and 1 - the zoom level of the bracket
 
-Default: 0 (automatic zoom level based on # of teams)
+Default: 0 (which means the plugin will calculate the default zoom level based on the # of teams)
 
 #### scaleDelta
 
@@ -139,7 +141,7 @@ Default: 200 (recommend not changing this unless also changing the font size in 
 
 #### teamNames
 
-JSON array representing team names and seeds to populate on the bracket. The order is top half bracket first round, top half bracket second round (if applicable), bottom half bracket first round, bottom half bracket second round (if applicable)
+JSON array representing team names and seeds to populate on the bracket. The order is top half bracket first round, top half bracket second round (if applicable), bottom half bracket first round, bottom half bracket second round (if applicable). See the [demo](http://mike-lipman.com/plugin/bracket-world/demo/index.html) for a look at how the ordering translates into the visual bracket.
 
 Default: none
 
@@ -248,10 +250,11 @@ thebracket.data("bracket").setHorizontal(function(e){alert('All Done Setting Hor
 Inputs:
 - teamJSON:   team seed and names in JSON format.
 
-To understand how these values are populated, look at your bracket in vertical orientation and the seeds/names will be added from top to bottom in the first round of the top half of the bracket followed by the second round of the top half of the bracket (if there are byes) then from top to bottom in the first round of the bottom half of the bracket followed by the second round of the bottom half of the bracket (if there are byes).
+To understand how these values are populated, look at your bracket in vertical orientation and the seeds/names will be added from top to bottom in the first round of the top half of the bracket followed by the second round of the top half of the bracket (if there are byes) then from top to bottom in the first round of the bottom half of the bracket followed by the second round of the bottom half of the bracket (if there are byes). See the [demo](http://mike-lipman.com/plugin/bracket-world/demo/index.html) for a look at how the ordering translates into the visual bracket.
 
 Example:
 
+```JavaScript
 var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
 thebracket.data("bracket").setTeams(
 [
@@ -284,6 +287,7 @@ thebracket.data("bracket").setTeams(
         seed:'8'
     }
 ]);
+```
 
 ## Notes
 Tested in IE9+, Chrome, Firefox, Safari
