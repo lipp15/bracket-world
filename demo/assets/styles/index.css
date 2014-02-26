@@ -1,0 +1,20 @@
+@font-face {font-family:'Quicksand-Regular'; src:url('../fonts/Quicksand-Regular.otf');}
+body {font-size:16px; line-height:26px;}
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {font-family:'Quicksand-Regular', Helvetica, sans-serif !important;}
+h2 {text-align:center;}
+h3 {color:#ff0000;}
+section h2 {text-align:inherit;}
+.action {margin-top:20px;}
+.action a span {color:#333333;}
+.action a:hover {text-decoration:none;}
+.action span {font-size:100px;}
+.glyph {margin-bottom:10px;}
+.glyphicon-download-alt {padding-right:7px;}
+.glyphicon-list-alt {padding-left:30px;}
+section {margin-bottom:50px;}
+code {display:block; margin-bottom:30px; white-space:normal; line-height:20px;}
+p code {display:inline; margin-bottom:inherit;}
+.bracket {margin-bottom:50px;}
+footer {text-align:center; padding:20px 0;}
+.img {text-align:center; margin-bottom:20px;}
+.img img {margin:auto;}

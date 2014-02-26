@@ -1,0 +1,19 @@
+.bracket-area{position:relative;overflow:auto;}
+.bracket-area svg{position:absolute;}
+.bracket-area .template{display:none;}
+.bracket-area .svg-group,.bracket-area .champion{position:absolute;top:0;left:0;width:auto;}
+.bracket-area .matchup-inner{position:relative;top:0;left:0;}
+.bracket-area .matchup-outer{position:absolute;}
+.bracket-area .svgs-cover{position:relative;margin:auto;}
+.bracket-area .bracketmode-inner{cursor:pointer;}
+.bracket-area .bracketmode-inner.selected svg rect{fill:#428bca;}
+.bracket-area .bracketmode-inner:hover{opacity:0.5;}
+.bracket-area .bracketmode-outer.bracket-drop-zone{background-color:#f0ad4e;cursor:pointer;}
+.bracket-area .bracketmode-outer.bracket-drop-zone:hover{background-color:#5cb85c;}
+.bracket-area .svg-team-top,.bracket-area .svg-team-bottom{z-index:1000;position:relative;}
+.bracket-area .svg-team-inner{position:relative;}
+.bracket-area .team-name-top,.bracket-area .team-name-bottom{color:#000000;float:right;font-size:20px;height:25px;overflow:hidden;position:relative;right:12px;top:5px;white-space:nowrap;width:65px;z-index:7;}
+.bracket-area .team-seed{color:#000000;float:left;font-size:14px;position:relative;top:5px;z-index:7;}
+.bracket-area .horizontal .team-name-top,.bracket-area .horizontal .team-name-bottom{float:left;left:12px;position:relative;right:0;text-align:right;}
+.bracket-area .horizontal .team-seed{float:right;}
+.bracket-area-main-icons{text-align:center;}

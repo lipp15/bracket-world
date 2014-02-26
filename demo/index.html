@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bracket World jQuery Plugin Demo</title>
+  <link href="assets/styles/libs/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/styles/jquery.bracket-world.css" rel="stylesheet">
+  <link href="assets/styles/index.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container" id="main-title">
+    <div id="main-title-content">
+      <img class="img-responsive" src="images/header.png" alt="Bracket World jQuery Plugin" />
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>A jQuery plugin for building tournament brackets.</h2>
+          <div class="action col-xs-12 col-md-5 pull-left text-right">
+            <div class="glyph">
+              <a href="../bracket-world-jquery-plugin-v1.zip">
+                <span class="glyphicon glyphicon-download-alt"></span>
+              </a>
+            </div>
+            <a href="../bracket-world-jquery-plugin-v1.zip" class="btn btn-lg btn-primary">Download</a>
+          </div>
+          <div class="action col-xs-12 col-md-5 pull-right text-left">
+            <div class="glyph">
+              <a href="#introduction">
+                <span class="glyphicon glyphicon-list-alt"></span>
+              </a>
+            </div>
+            <a href="#introduction" class="btn btn-lg btn-primary">Documentation</a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <section>
+      <h2>Introduction
+        <a name="introduction"></a>
+      </h2>
+      <p>The Bracket World jQuery plugin enables you to build graphical representations of custom-configured single-elimination tournament brackets on your site. Features include:</p>
+      <ul>
+        <li>Use of HTML5 SVG to build the bracket structure based on specified options</li>
+        <li>First round matches can be moved around to customize the look for bye situations</li>
+        <li>Bracket visuals can be zoomed in/out and made into a horizontal or vertical structure</li>
+        <li>Team names and seeds can be fed through the plugin options or via the API</li>
+      </ul>
+      <p>Based off of the design and code used in <a href="http://www.bracket-world.com">http://www.bracket-world.com</a>.</p>
+      <p><a href="#">Visit Bracket World on Github</a>
+      </p>
+      <p><a href="#">Fiddle with the options and API</a>
+      </p>
+    </section>
+    <section>
+      <h2>Start
+        <a name="start"></a>
+      </h2>
+      <ol>
+        <li>
+          <p>Include the jquery.bracket-world.css file in the
+            <code>&lt;head&gt;</code>of your HTML document:</p>
+          <code>&lt;link rel="stylesheet" href="path/to/your/jquery.bracket-world.css" /&gt;</code>
+        </li>
+        <li>
+          <p>Add this after your jQuery file include (usually just before the ending
+            <code>&lt;/body&gt;</code>tag):</p>
+          <code>&lt;script src="path/to/your/jquery.bracket-world.min.js"&gt;&lt;/script&gt;</code>
+        </li>
+        <li>
+          <p>Define the container for the bracket. It can be any simple wrapper but if you choose to give it an id/class, it should not be 'bracket-area', which is reserved:</p>
+          <code>&lt;div id="bracket1"&gt;&lt;/div&gt;</code>
+        </li>
+        <li>
+          <p>Invoke the creation of a bracket in your js (jQuery) code &mdash; this creates the most basic of brackets with 2 teams and a champion:</p>
+          <code>$('#bracket1').bracket();</code>
+        </li>
+      </ol>
+    </section>
+  </div>
+  <div id="bracket1" class="bracket"></div>
+  <div class="container">
+    <section>
+      <h2>Examples With Options
+        <a name="examples-with-options"></a>
+      </h2>
+      <p>Options can be sent in the invocation &mdash; this example creates an 11 team bracket, with 50 pixels of spacing from the top of the container in a 700 pixel space, zoomed out to 75% scale with helper icons and specific team names/seeds:</p>
+      <code>
+        $('#bracket1').bracket( { teams:11, topOffset:50, height:'700px', scale:0.75, icons:true, teamNames: [ { name:'Illinois', seed:'6' }, { name:'Iowa', seed:'11' }, { name:'Indiana', seed:'5' }, { name:'Penn State', seed:'4' }, { name:'Michigan State', seed:'1' }, { name:'Michigan', seed:'10' }, { name:'Ohio State', seed:'7' }, { name:'Wisconsin', seed:'9' }, { name:'Minnesota', seed:'8' }, { name:'Northwestern', seed:'3' }, { name:'Purdue', seed:'2' } ] });
+      </code>
+      <p>Click on any first round matchup to try out the move functionality.</p>
+      <p><a href="#options">View option documentation</a>
+      </p>
+    </section>
+  </div>
+  <div id="bracket2" class="bracket"></div>
+  <div class="container">
+    <p>Like any proper jQuery plugin, you can send a collection of DOM elements in the invocation. As written, this example will generate a bracket with the same characteristics in both containers.</p>
+    <code>$('#bracket3, #bracket4').bracket({teams:8});</code>
+  </div>
+  <div id="bracket3" class="bracket"></div>
+  <div id="bracket4" class="bracket"></div>
+  <div class="container">
+    <section>
+      <h2>Options Documentation
+        <a name="options"></a>
+      </h2>
+      <h3>teams</h3>
+      <p>Between 2 and 256 (practical limit) &mdash; the number of teams in the bracket.</p>
+      <p>Default: 2</p>
+      <h3>scale</h3>
+      <p>Between 0 and 1 &mdash; the zoom level of the bracket,</p>
+      <p>Default: 0 (automatic zoom level based on # of teams)</p>
+      <h3>scaleDelta</h3>
+      <p>Between 0 and 1 &mdash; the amount of zoom change that occurs when zooming in/out.</p>
+      <p>Default: 0.25</p>
+      <h3>height</h3>
+      <p>Pixel height of the bracket area.</p>
+      <p>Default: '500px' (does not impact the bracket itself as the area will scroll if it does not accomodate the dimensions)</p>
+      <h3>topOffset</h3>
+      <p>Pixel spacing between the top of the container and the top of the bracket.</p>
+      <p>Default: 105</p>
+      <h3>teamWidth</h3>
+      <p>Pixel width of a team name in the bracket.</p>
+      <p>Default: 200 (recommend not changing this unless also changing the font size in the css)</p>
+      <h3>teamNames</h3>
+      <p>JSON array representing team names and seeds to populate on the bracket. The order of how the entries are applied are as follows (relative to a vertical representation of the bracket): top-half bracket first round, top-half bracket second round (if applicable), bottom-half bracket first round, bottom-half bracket second round (if applicable). A horizontal representation works in a similar way except the right half of the bracket is flipped so that the entries are populated from the bottom line to the top line. The images below clarify the ordering.</p>
+      <div class="img">
+        <img class="img-responsive" src="images/vertical-set-teams.png" alt="How Teams Are Populated In The Bracket World jQuery Plugin (vertical)" />
+      </div>
+      <div class="img">
+        <img class="img-responsive" src="images/horizontal-set-teams.png" alt="How Teams Are Populated In The Bracket World jQuery Plugin (horizontal)" />
+      </div>
+      <p>Default: none &mdash; Example: <code>[{ name:'Illinois', seed:'6' }, { name:'Iowa', seed:'11' }]</code></p>
+      <h3>horizontal</h3>
+      <p>0 or 1 &mdash; determines whether to display the bracket in a horizontal (1) or vertical (0) representation.</p>
+      <p>Default: 1</p>
+      <h3>rectFill</h3>
+      <p>Color (hex or css &mdash; recognized string name) for the bracket's lines.</p>
+      <p>Default: '#ff0000'</p>
+      <h3>bgcolor</h3>
+      <p>Background color (hex or css &mdash; recognized string name) for the bracket's container.</p>
+      <p>Default: '#f2f2f2'</p>
+      <h3>transition</h3>
+      <p>Milliseconds or jQuery &mdash; recognized string that sets the transition speed for the
+        <code>.fadeIn()</code>/
+        <code>.fadeOut()</code>during bracket zooms/perspective changes.</p>
+      <p>Default: 'fast'</p>
+      <h3>icons</h3>
+      <p>True or false &mdash; whether or not to show the zoom/perspective change icons above and below the bracket area.</p>
+      <p>Default: true</p>
+    </section>
+    <section>
+      <h2>API
+        <a name="api"></a>
+      </h2>
+      <p>To perform operations on the bracket after invocation, leverage the
+        <code>.data("bracket")</code>attribute that's a part of the returned jQuery object. All of the below methods can be chained.</p>
+      <h3>zoomIn</h3>
+      <p>Inputs:</p>
+      <ul>
+        <li>scale: (optional) between 0 and 1, desired end scale for the bracket</li>
+        <li>func: (optional) callback function</li>
+      </ul>
+      <p>Examples:</p>
+      <p>Default behavior of zooming in by scaleDelta (default: 25%):</p>
+      <code>var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
+        <br />thebracket.data("bracket").zoomIn();
+      </code>
+      <p>Defining a scale and then taking an action after the zoom completes:</p>
+      <code>var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
+        <br />thebracket.data("bracket").zoomIn(0.75, function(e){alert('All Done Zooming In');});</code>
+      <h3>zoomOut</h3>
+      <p>Inputs:</p>
+      <ul>
+        <li>scale: (optional) between 0 and 1, desired end scale for the bracket</li>
+        <li>func: (optional) callback function</li>
+      </ul>
+      <p>Examples:</p>
+      <p>Default behavior of zooming out by scaleDelta (default: 25%):</p>
+      <code>var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
+        <br />thebracket.data("bracket").zoomOut();
+      </code>
+      <p>Defining a scale and then taking an action after the zoom completes:</p>
+      <code>var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
+        <br />thebracket.data("bracket").zoomOut(0.25, function(e){alert('All Done Zooming Out');});</code>
+      <h3>setVertical</h3>
+      <p>Inputs:</p>
+      <ul>
+        <li>func: (optional) callback function</li>
+      </ul>
+      <p>Example:</p>
+      <p>Setting the bracket to a vertical perspective and taking an action after the switch completes:</p>
+      <code>var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
+        <br />thebracket.data("bracket").setVertical(function(e){alert('All Done Setting Vertical');});</code>
+      <h3>setHorizontal</h3>
+      <p>Inputs:</p>
+      <ul>
+        <li>func: (optional) callback function</li>
+      </ul>
+      <p>Example:</p>
+      <p>Setting the bracket to a horizontal perspective and taking an action after the switch completes:</p>
+      <code>var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
+        <br />thebracket.data("bracket").setHorizontal(function(e){alert('All Done Setting Horizontal');});</code>
+      <h3>setTeams</h3>
+      <p>Inputs:</p>
+      <ul>
+        <li>teamJSON: team seed and names in JSON format</li>
+      </ul>
+      <p>To understand how these values are populated, look at your bracket in vertical orientation and the seeds/names will be added from top to bottom in the first round of the top half of the bracket followed by the second round of the top half of the bracket (if there are byes) then from top to bottom in the first round of the bottom half of the bracket followed by the second round of the bottom half of the bracket (if there are byes).</p>
+      <p>It's important to note that the right half of the bracket in a horizontal orientation will flip the team lines. This is due to the rotations and translations involved in creating the horizontal representation from the vertical.</p>
+      <div class="img">
+        <img class="img-responsive" src="images/vertical-set-teams.png" alt="How Teams Are Populated In The Bracket World jQuery Plugin (vertical)" />
+      </div>
+      <div class="img">
+        <img class="img-responsive" src="images/horizontal-set-teams.png" alt="How Teams Are Populated In The Bracket World jQuery Plugin (horizontal)" />
+      </div>
+      <p>Example:</p>
+      <code>var theBracket = $('#bracket1').bracket({teams:7, height:'590px'});
+        <br />thebracket.data("bracket").setTeams( [ { name:'Texas', seed:'5' }, { name:'Kansas', seed:'4' }, { name:'Kansas State', seed:'1' }, { name:'Baylor', seed:'7' }, { name:'Texas Tech', seed:'3' }, { name:'TCU', seed:'2' }, { name:'Oklahoma State', seed:'8' } ]);
+      </code>
+    </section>
+    <section>
+      <h2>Notes
+        <a name="notes"></a>
+      </h2>
+      <ul>
+        <li>Tested in IE9+, Chrome, Firefox, Safari</li>
+        <li>Though not specifically coded in a responsive way, the bracket should scale nicely to different screen sizes &mdash; there is no width dependency and the area will simply scroll if the bracket's width goes outside the viewport</li>
+        <li>Colors specific to the operation of moving matchups around to reposition bye lines can only be edited via the css (jquery.bracket-world.css)</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Changes
+        <a name="changes"></a>
+      </h2>
+      <ul>
+        <li>Version 1.0 &mdash; 02/22/2014</li>
+      </ul>
+    </section>
+  </div>
+  <script src="assets/scripts/libs/jquery-2.0.3.min.js"></script>
+  <script src="assets/scripts/libs/bootstrap.min.js"></script>
+  <script src="assets/scripts/libs/jquery.bracket-world.min.js"></script>
+  <script src="assets/scripts/index.js"></script>
+  <footer>
+    &copy;
+    <script type="text/javascript">
+    document.write(new Date().getFullYear());
+    </script> mike-lipman.com
+  </footer>
+</body>
+
+</html>
