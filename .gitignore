@@ -1,3 +1,6 @@
+.gitignore
+.gitattributes
+
 #################
 ## Eclipse
 #################
@@ -192,7 +195,6 @@ $RECYCLE.BIN/
 # Packages
 *.egg
 *.egg-info
-dist/
 build/
 eggs/
 parts/
