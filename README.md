@@ -12,6 +12,8 @@ Based off of the brackets used in http://bracket-world.com.
 
 [View demos and documentation](http://mike-lipman.com/plugin/bracket-world/demo/index.html)
 
+[Fiddle with an example](http://jsfiddle.net/lipp15/8MjyD/)
+
 Minified size: ~20kb
 
 ## Start

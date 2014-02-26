@@ -18,3 +18,8 @@ p code {display:inline; margin-bottom:inherit;}
 footer {text-align:center; padding:20px 0;}
 .img {text-align:center; margin-bottom:20px;}
 .img img {margin:auto;}
+
+@media (max-width:767px){
+.col-xs-12.pull-left.text-right, .col-xs-12.pull-right.text-left {text-align:center !important; float:none !important;}
+.col-xs-12.pull-left.text-right .glyphicon-download-alt {padding-left:10px; padding-right:0;}
+.col-xs-12.pull-right.text-left .glyphicon-list-alt {padding-left:0px; padding-right:8px; padding-top:30px;}}
